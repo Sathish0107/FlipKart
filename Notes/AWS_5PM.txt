@@ -1,0 +1,3968 @@
+Aws with DevOps:
+
+AWS ---> amazon web services
+
+Development + Operations
+
+Master program(AWS + DevOps):
+
+Module1: AWS
+Module2: Python
+Module3: Linux commands
+Module4: DevOps
+Module5: AWS + DevOPs(Project 3 Demo)
+Module6: Resume Preapration + Mock Interview(7)
+
+Duration: 3- 3.5 months
+---------------------------
+Day01:
+
+IT ----> Developer + Tester + DevOps
+
+Facebook ---> developer(java/js/ruby/python) ----> tester(code which is developed by developer) ---> DevOPs(host and deploy) ---> customer
+
+Application:
+
+Web application ---> -----------> anything which is opening in the browser
+Desktop application --------> apps in the desktop/laptop
+Mobile application -----------> apps in the mobile
+
+eg: Whatsapp
+
+Web application ---> more focus
+
+Cloud computing:
+
+Why cloud?
+
+
+NewFacebook ---> 2 server(100 users) ---> 1000 customers(application crash)
+
+Data Centres or on premises:
+
+* collection of servers
+* huge initial investment
+* huge acres of land
+* time taken is vey high
+* Scalability 
+
+100(2 servers) ----> 1000 servers(10000 users) 
+10000 ---> 100 users ---> remaining server waste
+
+Cloud providers:
+
+AWS ---> amazon
+AZure ---> MS
+GCP ---> Google 
+
+AWS ----> most preferred
+
+* pay per usage(postpaid)
+* no initial investment
+* no acres of land
+* scalabilty ---> 100 ---> 1000 customer ---> auto scablae
+
+Horizontal:
+
+*8GB RAM + 256 GB SSD ---> 1000 users ----> increase the  number of machines/servers
+
+Vertical 
+
+* upgrading the configuration in the same machine
+-------------------------------------------------------------------------------
+Day 2:
+
+AWS Account Creation:
+
+https://portal.aws.amazon.com/billing/signup#/start/email
+
+2rs from account ---> refunded within 1-2 business days
+
+Root user ---> super admin access/ super user ---> Account owner that performs tasks requiring unrestricted access.
+
+1) Region:
+
+* geographical loaction
+* Each region has multiple Availabilty Zones(data centres)
+
+Example 1:
+
+NewFaceBook ---> app ---> us people going to use this site ---->development team(chennai/hyderabd-CTS) ---> us region
+
+2) Availability Zones:
+
+* Data Centre
+* AZ are very much secured ---> noone doesn't know where the AZ located/ AWS peoples doesnt know the AZ location.
+* Each AZ has multiple edge locations
+
+31 Launched regions ---> 99 AZ Zone
+
+example 2:
+
+ecommerce site --> amazon ---> india, us, Australia ---> where we have high number of customer ---> that region we will be choosing out
+
+example 3:
+
+netflix ---> australian and indian peoples ---> indian customer are high ---> asia region ---> but there's a restriction from aust governement like australian peoples data should not be shared to indian servers ----> we need to choose the australian region
+
+example 4:
+
+netflix ---> us, india, uk ----> us peoples high ---> region will be us ----> 
+
+us peoples ---> video quality will very high
+uk, india ----> latency high ---> poor quality
+
+3) Edge Locations:
+
+* data will be cached
+* cached data will be used for optimizing the performance
+-------------------------------------------------------------------------------
+EC2:
+
+Elastic Cloud Compute ---> Virtual server/machine/instance
+
+Steps:
+
+1) EC2 dashboard ---> launch the instance
+2) Name and tags ---> key value pair
+
+key ---> name
+value --> myMachine
+3) AMI(Application and OS Images (Amazon Machine Image))
+* OS
+* software part + pre installed software
+4) Instance type  ---> hardware part
+
+How to choose the instance type?
+
+vcpu
+memory(RAM)
+n/w performance
+
+instance families:
+
+General purpose ----> moderate perfomance ---> balanced vpc, memory, n/w
+Compute optimized ---> calculation ---> calculative projects
+Storage optimized ---> high load db projects., searcg engines
+Memory optimized ----> Memory-intensive workloads such as open-source databases, in-memory caches, and real-time big data analytics.
+Accerlerated computing ---> more calculative projects
+HPC ----> High Performace Computing ---> costly when compared to all the family types
+
+Pricing Options:
+
+* on demand pricing
+* reserved pricing
+* spot instance
+* dedicated instance
+
+on demand pricing:
+
+* sudden purchase
+* expensive
+
+Reserved pricing:
+
+* plan early and will reserve the instance
+* 1 - 3 yrs
+* cheap --> 70% discount
+
+fully upfront ---> total amount will be paid initially ---> 70% 
+partial upfront ---> partial amount will be paid initially and remaianing pay per usage ----> 50% discount
+no upfront ---> no initial payment ---> 20% discount
+
+Spot Instance:
+
+* unused servers will be allocated
+* 90 % discounted price
+* not reliable 
+
+server $5 --> $7 --> $11
+
+person1 ---> $5
+person2 ---> $10
+person3 ---> $15
+
+Dedicated Host:
+
+* one particular server dedicated to one organization
+* expensive and reliable
+-------------------------------------------------------------------------
+
+5) Key Pair(login): ----> secure our instance
+
+6) Network Settings ---> Firewall ---> security groups
+
+By default --> your instance will be secured by firewall
+
+SSH ---> Secure Shell --->  in order to access your linux machine from outside 
+
+7) Configuration Storage:
+
+* hardisk
+----------------------------------------------------------------------------
+
+How to connect the instance:
+
+* connect ---> AWS management console
+* CLI(cmd+cloudshell)
+* putty
+* programatical way
+
+How to connect with the help of command prompt:
+
+.pem file ---> open the command prompt
+
+cd --> change directory
+
+syntax:
+
+ssh -i <key-pairname> username@ipaddress
+
+ssh -i newKP0704.pem ec2-user@ec2-13-233-63-34.ap-south-1.compute.amazonaws.com
+
+-i ---> identifier
+
+Cloudshell:
+
+* upload the .pem file under the actions
+* chmod 400 newKP0704.pem
+* ssh -i "newKP0704.pem"ec2-user@ec2-13-233-63-34.ap-south-1.compute.amazonaws.com
+-------------------------------------------------------------------
+How to connect the ec2 instance with putty:
+
+putty: external tool ---> which helps to connect our instance
+
+.ppk file ---> Key pair
+
+start ---> putty
+
+https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
+putty.exe (the SSH and Telnet client itself)
+64-bit x86: putty.exe
+
+putty ---> host name(copy and paste the ip address of your instance)
+connection -->ssh ---> auth ---> credentails ---> upload your downloaded .ppk file over there
+--------------------------------------------------------------------
+
+How to launch the windows machine:
+
+SSH ---> linux
+RDP ---> windows
+
+RDP ---> remote desktop protocol
+
+if we try to connect machine ---> password(under .pem file)
+---------------------------------------------------------------
+Storage in EC2:
+
+Storage ---> harddisk/pendrive/googlecloud
+
+* by default ---> while creating the instance ---> default storage allocated
+
+Types:
+
+ephimeral storage 
+persistent storage
+
+
+ephimeral storage:
+
+* faster but it's not realiable
+* if anything happens to your machine ---> entire data will be crashed
+* temporary data
+* tightly coupled
+
+eg: RAM
+
+Persistent storage:
+
+* Reliable
+* loosely coupled
+* permanent data
+* external storage(eg: external harddisk, pendrive)
+
+EBS:
+
+Elastic Block Storage ---> called as Volumes
+
+* external storage
+* even if the machine crashes, our data is safe with EBS
+* persistent storage and loosely coupled
+
+Types of volumes:
+
+* Magnetic disk drive(no organization is using)
+* HDD(Hard Disk Drive)
+* SSD(Solid State Drive)
+
+Data:
+
+Cold Data
+Hot Data
+
+Cold Data:
+
+* infrequently accessed data
+
+Hot Data:
+
+* Frequently accessed data
+
+
+HDD:
+
+* Hard Disk Drive
+
+types:
+
+Cold HDD -------------> infrequently accessed data
+Thorughput HDD(Hot data)
+
+Thorughput:
+
+* amount of data transferred per second
+* factor of performance for the data transfer/sec
+
+100 MB ---> 20MB/sec ---> 5 seconds
+1000 MB ---> 100MB/sec ---> 10 seconds
+
+
+SSD: ---> solid state drive
+
+* performance id very high
+* cost is very high
+* reliable
+
+Types:
+
+General purpose
+Provisional IOPS
+
+General purpose :
+
+* newfacebook ---> moderate web traffic/spike 
+* less cost when compared to IOPS
+
+3 IOPS ---> 1 GB
+
+refill iops ---> automatically refill
+
+1000 ---> 3000 - 1000 = 2000 IOPS ---> for next operation it will refill to 3000
+
+Provisional IOPS: 
+
+* Input/Output ---> read/write
+* number of i/o per seconds
+* performace high
+* very cost
+
+50 IOPS ---> 1 GB
+
+Can we make the default storage not to delete when ec2 termainates/crashes?
+
+Yes, we can do this ---> Delete on termination --> NO option
+
+Snapshot:
+
+* backup of EBS
+
+eg:
+
+Whatsapp ---> google drive
+
+Manual snapshot/backup ----> create snapshot
+Automatic snapshot/backup ---> create snapshot lifecycle policy
+
+
+Frequency ---> Daily, monthly, weekly, yearly
+Retention ---> recent snapshot
+
+EBS restriction:
+
+* volume which we are creating cannot be shared to other AZ/region
+* we cannot share the volume to multiple ec2 instance
+
+To overcome this "we cannot share the volume to multiple ec2 instance":
+
+EBS Multi Attach Feature:
+
+* provisioned IOPS
+* nitro instance type
+
+Expensive
+----------------------------------------------------
+EFS:
+
+Elastic File System
+
+* shared resources
+* Regional service ---> data cannot be shared outside the regions
+
+Storage classes:
+
+* standard:
+
+data will be replicated across multiple AZ within the region
+
+eg: 27INR/GB
+
+* standard IA:
+
+IA ---> Infrequent Access
+
+* if your data is not frequently accessed --> it will automatically moved to standard IA
+
+eg: 2INR/GB
+
+* One Zone:
+
+data will be replicated to only one AZ
+less expensive when compared to standard
+
+14INR/GB
+
+* One Zone IA:
+
+if your data is not frequently accessed --> it will automatically moved to standard IA
+
+eg: 1.19INR/GB
+
+Provisioned Throughput: 
+
+high performance ---> 541 INR/MB
+
+Lifecycle management :
+
+Transition into IA:
+
+Transition files from Standard to Standard-Infrequent Access.
+
+Transition out of IA:
+
+Transition files from Standard-Infrequent Access to Standard.
+
+Performance settings:
+
+Bursting ---> auto scale
+Enhanced ----> flexible
+--------------------------------------------------
+Mount targets:
+
+EFS cannot directly connect to the EC2 ---> we need a support of MT
+
+EFS ---NFS protocol ---> MT -----> EC2 instance
+
+Each AZ has the MT
+
+Task:
+
+2 EC2 instances ---> 1 EFS 
+
+if i add any file in lm1 --> it should be reflected in lm2
+
+Steps to connect EFS:
+
+After connecting to the EC2:
+
+Security Groups ---> default ---> inbound rules --> edit --> allow nfs protocol
+
+sudo su --> superuser ---> normal user to admin user
+sudo yum update -y ---> update your machine
+sudo yum install -y nfs-utils ---> install the nfs on your machine
+mkdir ---> make directory
+ls --> list all the files/folder/directories
+cd ---> change directory
+touch --> create a file
+
+Advantages:
+
+* We can connect this efs --> outside the AZ within the region
+* we can connect with the multiple ec2 machines
+
+Dsiadadvantages:
+
+* We cannot connect outside the region
+---------------------------------------------
+user data:
+
+* 10 machines ---> java install
+
+* it allows to install any software in multiple machines at the same time
+
+Task:
+
+create EC2 --> 2
+userdata ---> script ---> install apache on both the machine at the same time
+
+httpd ---> apache server
+
+https://gist.github.com/herrera-ignacio/4d91ae564364f9120720f6bf029b9412
+-------------------------------------------------------------------
+S3: 
+
+1) Simple Storage Service
+2) Unstructured files
+Structured file ---> proper format data(table data)
+Unstructured ---> image, files, videos, excel sheets, html, log files
+3) Unlimited Storage
+4) Single Object/file ---> should not exceed 5TB
+5) Cheaper than EFS
+
+EFS ---> Storage  + number of file operations
+S3 ---> Storage
+6) s3 ---> called as ---> Bucket
+7) We can even connect outside the Region as well:
+
+It is the global service
+
+we can connect outside the AZ
+we can connect to multiple ec2
+we can connect outside the region
+
+
+Types of format:
+
+XML ---> Xtensible Markup Language
+JSON ---> JavaScript Object Notation ---> key - value
+
+"name" : "rahul"
+"age"  : "23"
+
+To view the object:
+
+1) unblock the public access
+2) generate the json policy to get the object
+
+ARN ---> Amazon Resource Name
+
+URL ---> Uniform Resource Locator
+URN --> Uniform Resoruce Name
+
+Action: GetObject
+
+------------------------------------------------
+S3 Versioning:
+
+Version ---> to track all the modified file or the previous history of the files
+
+file name ---> file1.txt
+
+file1.txt ---> hello ---> v1
+
+file1.txt ---> hello welcome!! ---> v2
+
+file1.txt ---> hello welcome!! this is aws session ---> v3
+
+v3 ---> v2 + v1
+if ther's any issues occured in v3 ---> we can immediatedly revoke back to v2 --> we can avoid the issue temporaraily 
+
+Bt default ---> version will be disabled
+
+Demo1 to get the object and objectversion files:
+
+If disable the version ---> it will be considered as the normal object ---> GetObject
+
+If enable the show version ---> it will be considered as the version enabled object ---> GetObject + GetObjectVersion
+
+Demo2 for deletion:
+
+If disable the show version ---> object will be deleted(but the version will not be disabled) ---> but it will be moved to delete marker(if you enable the show version and see)
+
+delete marker ---> recycle bin
+
+If enabling the show version ---> if we delete the version we cannot restore the deleted version---> v2 will be recent file
+-----------------------------------------------------------
+S3 Static Website Hosting:
+
+Static -----> website which does not have any updated often
+
+Dynamic ---> often we will update the new changes to the site
+
+S3---> allows us to host the static website
+
+By default ---> it will be disabled
+
+<html>
+<head></head>
+<body></body>
+</html>
+
+https://freefrontend.com/403-forbidden-html-templates/
+---------------------------------------------------------------------------------EVENT Notifications:
+
+Event ---> something event ocuurs
+
+Notify whenever the event occurs
+
+SNS and SQS:
+
+SNS ---> Simple Notification Service
+
+* if there's no user available to receive the notifications ---> it will not be delivered
+
+SQS ---> Simple Queue Service
+
+* if there's no user available to receive the notifications --> it will keep the notifications in the queue for 14 days ---> if still after 14 days no receivers comes ---> notifications will not be delivered
+
+SNS:
+
+* topics
+* notification service
+* pub sub model
+
+pub ---> publisher
+sub ---> subscriber
+
+eg: Amazon Prime:
+
+publisher ---> Amazon
+subscriber --> user
+
+in s3:
+
+publisher ---> s3
+subscriber ---> user
+
+* push notification service
+
+Steps:
+
+Create the bucket
+Create the SNS
+Create the user
+
+Link SNS with USER:
+
+SNS ---> user (create subscription and configure our email address)
+
+Link S3 with SNS:
+
+Event notifications:
+
+Event types: put and post
+
+put ---> updating the exisiting object
+post ---> uploading the new object
+
+Once you create the event notifications under the s3 ---> by default SNS will not allow the s3 to publish the notification
+
+SNS ---> access policy ---> allow the s3 to publish
+
+https://docs.aws.amazon.com/sns/latest/dg/sns-access-policy-use-cases.html
+------------------------------------------------------
+Storage Classes in s3:
+
+* Standard
+* Glacier
+
+S3 Standard:
+
+* default storage class in s3
+* frequently accessed data
+* retrive the data immediatedly
+
+S3 Glacier:
+
+* infrequently accessed data
+---------------------------------------------
+lifecycle rule:
+
+* Transfer the object from one storage class to another storage 
+* delete an object if you don't want
+
+Bucket ---> Management ---> Life cycle rule
+
+--------------------------
+
+CRR: Cross Region Replication
+
+* automatically replicate the data between the regions
+* we can even share the storage outside the regions as well
+
+Managemnets ---> Replication Rule
+--------------------------------------------
+Encryption:
+
+* plain text(human readable text) ---> machine readable text
+* by default ---> all your file are encrypted
+
+SSE ---> Server Side Encruption
+Amazon SSE  ---> s3 default
+Amazon KMS
+---------------------------------------------
+
+Characteristics of s3:
+
+* highly available service
+* unlimited storage
+* one object ---> should not exceed more than 5 TB
+* we can share the storage across the regions as well ---> CRR
+* versioning
+* host the static website
+* trigger an notifications with the SNS
+* lifecycle rule
+---------------------------------------------------------------------------------
+
+Root User:
+
+* Super user or administrative access
+* Account owner that performs tasks requiring unrestricted access ---> there's no restrictions for the root user account
+
+TL ---> Root user account
+Dev1,2,3 ---> IAM user
+
+Adding One more layer of security ---> MFA(Multi Factor Authentication)
+
+Playstore ---> Duo Mobile
+
+Setup new account ---> use qr code or use activate code ---> Save 
+-------------------------------------------------------------
+
+IAM:
+
+Identity and Access Management
+
+Authentication -----> Validating the identity
+
+Authorization ----> Validating the access
+
+CTS ---> Gate ---> ID Card(Authentication) --> Toyoto(They have a separate room) ---> enter into this room(access card)
+
+
+Google sheet:
+
+1 Sheet ---> 10 Members
+
+5 ---> viewer access  ----> authenticated
+3 ---> read/write access ---> authenticated + authorized
+2 ---> no access
+
+How many authenticated users?
+
+8
+
+How many authorized users?
+
+3
+
+No Authentication + Authorization:
+
+2
+----------------------------------------------------
+Four elements:
+
+IAM User
+Roles
+Groups
+Policies
+
+Authentication:
+
+IAM user + roles
+
+Authorization:
+
+policies
+
+Best Practices:
+
+Groups
+
+"Who can access What"
+
+who ---> user
+Access ---> set of instructions which either allow or deny the access(policy)
+What ---> Aws Services
+
+Developer 1 ---> IAM User ---> access only to use the instance, s3 bucket
+
+IAM ---> From the root user we need to create IAM user
+
+How many ways we can create the IAM User account:
+
+Amazon UI
+CLI
+Programmatical way
+
+Root user ---> email address + password
+
+IAM user ---> AccountId + username + password
+--------------------------------------------------
+VPC:
+
+Virtual Private Cloud
+
+* independent service
+* Regional Service
+* logically isoloted service
+
+isolation:
+
+separate ---> private space ---> secure 
+
+server ---> shared by multiple users ---> but the resources are not shared between the users
+
+each user ---> may be secured with private cloud ---> vpc ---> separting the users
+
+VPC ---> secure the resources between the users
+
+By Default ---> 
+
+each region is secured by the vpc
+each AZ is secured by the subnets
+
+vpc --> region
+subnet --> AZ
+
+We can have 5 VPC per Region
+We can have 200 subnets per region
+
+Subnet:
+
+By default ---> vpc will not allow the public internet
+
+public subnet
+private subnet
+
+public subnet:
+
+we can access the subnet with the help of public internet
+
+private subnet:
+
+we cannot connect to the private subnet with the public internet dorectly
+--------------------------------------------------------------------
+World ---> each country having unique name
+
+Each system ---> has unique ip address
+
+public ip address ----> machine ip address
+
+private ip address ---> network provider
+
+IP address ---> Network ID + Host ID
+
+Ipv4:
+
+32 bit ip address
+Network Id ----> four blocks
+115.97.232.99
+ 8  8   8  8
+
+Ipv6:
+
+128  bit ip address
+Network Id ----> Eight blocks
+ab25.ss55.22ij.998n.njd2.kiu4.njfu.jji8
+16   16    16   16   16  16    16   16
+-----------------------
+Ipv4:
+
+Network ID + Host ID
+
+32 bit ip address
+Network Id ----> four blocks
+Host ID ---> one block
+
+Range:
+115.97.232.99
+
+Each block shoud have the value between 0 - 255
+
+0.0.0.1
+10.0.0.255
+255.255.255.255
+256.12.89.11 ----> invalid 
+
+Host ID ---> range between 1 to 32
+
+Network ID + Host ID:
+
+10.0.0.0/32
+115.97.232.99/32
+
+CIDR: Classless Inter Domain Routing
+
+10.0.0.0/32 ----> 1 ip address ---> 10.0.0.0
+
+10.0.0.0/31 ---> 2 ip address ---> 10.0.0.0, 10.0.0.1
+
+2^32-hostid ----> 2^32-32 --> 2^0 ---> 1
+
+10.0.0.0/31:
+
+2^32-31 ---> 2^1 --> 2 ip address
+
+10.0.0.0/24 ---> 2^32-24 --> 2^8 --> 2*2*2*2*2*2*2*2 ---> 256 ip address
+
+10.0.0.0
+10.0.0.1
+10.0.0.2
+...
+..
+10.0.0.255
+
+10.0.0.0/16 ---> 2^32-16 ---> 2^16 ---> 65536 ip address
+
+10.0.0.0
+10.0.0.1
+10.0.0.2
+...
+..
+10.0.0.255
+
+10.0.1.0
+10.0.1.1
+10.0.1.2
+..
+..
+10.0.1.255
+
+10.0.255.255
+
+https://www.ipaddressguide.com/cidr
+https://www.site24x7.com/tools/ipv4-subnetcalculator.html
+-------------------------------------------------
+Task1:
+vpc --> 1 public subnet -->1 ec2 ---> connect
+
+1) create a vpc
+2) create a public subnet
+3) create an ec2 instance ---> if we connect --> it will not connect
+4) create  Internet Gateway + attach to the vpc
+5) By default when we create vpc --->we will get the RT ---> attach my IGW under the edit routes section + associate your public subnet under the subnet association section
+6) connect an ec2 instance ---> it will connect
+-----
+IGW + RT ---> to connect public subnet
+
+NAT + RT ---> to connect private subnet
+
+NAT---> Network Access Transmission 
+
+Task2:
+
+VPC + 2 subnet(public + private subnet) + 2 EC2(public + private)
+IGW + RT ---> to connect public ec2
+NAT + RT ---> to connect private ec2
+
+connect your public subnet ---> vim keypair.pem
+editor ---> copy and paste the key which we have copied from private key file
+esc + :wq!
+chmod 400 keypairname.pem(private key)
+ssh -i keypairname username@ipaddress(privateserver ip address)
+
+--------------------------------------------------------------
+Peering Connection:
+
+* sharing resources from one vpc to another vpc
+
+3 vpc ---> 3 PRC
+4 vpc --> 6 prc
+
+N(N-1)/2 ---> 4(4-1)/2 ---> 4(3)/2 ---> 12/2 ---> 6 vpc
+
+3(2)/2 ---> 6/2 --->3 vpc
+
+6(5)/2--> 30/2 ---> 15
+
+
+within account
+within regional account
+another account outside the region
+--------------------------------------------------------
+
+Peering Connection + Transit Gateway
+--------------------------------------------------------------------
+Security Group vs Nacl:
+
+Security Group ----> instance level firewall ----> stateful ---> allow
+NACL(Network Access Control List) ----> subnet level firewall ---> stateless---> allow/deny the permision 
+
+stateful vs stateles:
+
+stateful---> remembers an authentication which we have given while entering
+stateless ---> doesn't remember an authenctication
+------------------------------------------------------------
+
+Application:
+
+machine/server/instance ----> ec2
+storage ---> ebs, efs, s3
+network ---> vpc
+database 
+
+
+Database:
+
+* systematic collection of data
+* huge data management
+
+-- Availability
+-- Scalability
+-- Fault Tolerance
+
+AWS Managed Service vs Unmanaged Service
+
+RDS(Relational Database Service) ---> AWS Managed services
+custome database ---> unmanaged service ---> user managed service
+
+Types of DB's:
+
+1) SQL/RDMS(Relational Database Management Service)
+
+MySql, ORACLE, MS Access, Postgre SQL, MariaDB
+
+2) NoSql
+
+MongoDB, Hadoop, Cassandra, HBase, DynamoDB
+
+
+MySql:
+
+Create RDS ---> Mysql DB
+
+dev ---> wwwdev.amazon.in
+int ----> wwwint.amazon.in
+qa -----> wwwqa.amazon.in
+perf ----> wwwperf.amazon.in ---> UAT Testing
+prod ----> amazon.in
+-----------------------------
+
+ec2 ---> SG --> inbound rules(mysql/aurora)
+dfault SG
+------------
+sudo su
+yum update -y
+yum install -y mysql
+mysql --version ---> give the version of mysql installed
+mysql -h <database-end-point> -P Portnumber -u <user-name> -p
+mysql -h database-1.cfbzvvdl4qyv.us-east-2.rds.amazonaws.com -P 3306 -u admin -p
+-h ---> hostname
+-P ---> portnumber
+-u ---> username
+-p ---> password
+
+Allow Mysql/Aurora in inbound rules of your ec2 instance
+
+
+show databases; ---> it will list down all db's
+create database <database-name>;
+use <databasename>;
+
+CREATE TABLE employees (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  department VARCHAR(50) NOT NULL,
+  hire_date DATE NOT NULL,
+  PRIMARY KEY (id)
+);
+
+show tables; 
+
+INSERT INTO employees (name, email, department, hire_date)
+VALUES
+  ('John Smith', 'john.smith@example.com', 'Sales', '2022-01-01'),
+  ('Jane Doe', 'jane.doe@example.com', 'Marketing', '2021-05-15'),
+  ('Bob Johnson', 'bob.johnson@example.com', 'Finance', '2020-09-01');
+
+
+PRIMARY KEY ---> unique key identifier
+
+Select * from table;
+
+select name from table;
+
+select name from table where department ='Marketing';
+
+Drop table table_name; ---> delete the table
+
+Drop database database_name; ---> delete your database
+--------------------------------------------------------------
+RDS Read Replica:
+
+* replicate the db in AZ and regions
+* 5 replication for one main DB
+* under 5 replicated db ---> we can n number of sub replications
+* it will take some time to replicate in other db's --> it wont immediatedly replicate the data
+
+Why read replica?
+
+high performance
+high availability
+---------------------------------------------------------
+Sql/RDS:
+
+* MySql
+* Structured data
+* vertical scalability
+* query to retrive data
+* low performance when compared to dynamodb
+* serverbased 
+
+
+NoSql:
+
+* DynamoDB
+* unstructured or semi structured data
+* horizontal scalibilty
+* no query
+* high performance
+* high expensive
+* serverless
+
+
+Managed NoSQL Database ---> DynamoDB
+fast and flexible NoSQL database 
+
+Partition key:
+
+Primary key ---> unique key identifier
+
+Student_id ---> 100, 101, 102 
+
+numerical ---> number
+characters ---> string
+map ---> key value pair 
+
+key-value pair
+
+Student_Id     Student_Name   Student_Subject Student_Marks
+100 			 ramesh			aws 			90
+101  			 nikhil         aws 			80
+102 			 tulasi			aws     		79
+103				 dinesh			aws 			70
+104				 Ragul          aws     		70
+104 			 Ragul          GCP             75
+
+primary key is mandatory
+
+Sort key ----> composite key --->  second part of a table's primary key.
+
+Student_Id     Student_Name   Student_Subject Student_Marks
+100 			 ramesh			aws 			90
+101  			 tulasi         aws 			80
+101 			 tulasi			gcp  			85
+----------------------------------------------------------------
+Consistency:
+
+Eventually Consistent:
+
+add/delete/update ---> it will take some time to reflect in db
+
+Strongly Consistent:
+
+add/delete/update ---> it will be immediatedly reflected in the db
+-----------------------
+Indexing:
+
+* optimize the performance of DB
+
+Product_Details:
+
+Product_ID 			Product_Name  		Product_Price
+1001 				Iphone 13 				60000
+1002 				Iphone 14 				70000
+1003 				Samsung s23 			100000
+
+Iphone 14 ---> offer ---> 10k discount
+
+Select Product_Name from product_details; ----> db performance will be low
+
+Index ---> we will create a sub table for product_name
+
+Types:
+
+Local Secondary Index:
+
+* this index can be created only while creating a table
+* sort key ---> filtering with one value
+
+eg: Library ---> AWS/DevOps, Azure/DevOps ---> Author : John
+
+
+Global Secondary Index:
+
+
+* this index can be created while creating a table...even after creating table
+* we need to define partition key + sort key
+
+eg: library
+
+Filter the book bases on diff column names ---> author, genre, publishers, year of published
+
+------------------------------------------
+Global Table:
+
+* replicating your database
+* we can replicate the same tabe in diff region
+
+-------------------------------------------
+
+Exports:
+
+* we can export our data from db to s3 bucket
+
+Which mechanism used to export the data to s3?
+
+DynamoDB stream
+------------------------------------------
+Backup:
+
+Point-in-time recovery (PITR)
+
+Continuous backups of your DynamoDB data for 35 days to help you protect against accidental write or delete operations. 
+-----------------------------------------------------------
+AWS Lambda:
+
+Fucntion
+
+* compute service
+
+EC2 ----> virtual machine/server/instance 
+
+java + dependencies + environment + libraires
+
+We need to manaully manage everything......> management
+
+example:
+
+Ec2 + s3 + RDS 
+
+AWS ---> compute service ---> lambda(automate the infrastructure)
+
+* event driven serverless compute service
+
+event driven ----> driven by an event
+serverless --->without managing the underlying infrastructure(auto managed)
+compute ---> processing
+
+demo1:
+
+s3
+lambda
+cloudwatch ---> log + alarm
+IAM ----> whenever you're integration one or more services
+
+upload file ---> s3 --> file1.img ---> content type  img
+
+demo2:
+
+lambda ---> one url ---> https:www.amazon.in ---> amazon
+it will present one message in log called check passed ---> if it is not present ir will print message check failed
+
+Bluprint name ---> schedule periodic check for any url
+role permission ---> simple microservice permission ---> to access any url's
+
+Alarm:
+
+OK ----> everything works fine
+in alarm ----> there's some issue
+insufficient data ----> no data
+
+Metric ---> lambda ---> functioname--> errors
+
+for one minute ---> 1 error or more than 1 error
+
+Demo4:
+
+EC2 + autostop(running for more than 1 minute)
+
+4 server ---> 2 servers 
+
+boto3 ---> library to interact with other services
+
+varianble ---> container
+
+a = 10
+b = 5
+
+a + b = 15
+
+region = "us"
+instances = [""]
+
+import boto3
+region = 'us-east-2a'
+instances = ['i-0a0c62a653b836857','i-035bd316774eb09cf']
+ec2 = boto3.client('ec2', region_name=region)
+
+def lambda_handler(event, context):
+    ec2.stop_instances(InstanceIds=instances)
+    print('stopped your instances')
+----------------------------------------------------------------------
+CloudFormation:
+
+* IaaC ---> Infrastructure as a Code
+
+organization ---> 5 ec2 + 5 vpc + 1 s3 + 1 rds
+
+Template: JSON, YAML
+
+Stack(Logical unit whch contains all the resources to be created)
+
+Feed the resources which we need ---> stack ---> will created the infrastructure with the help of feeded resources
+
+Task1:
+
+create simple ec2 machine
+
+---
+Resources:
+  MyInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-east-2a
+      ImageId: ami-083eed19fc801d7a4
+      InstanceType: t2.micro
+
+Can we change the template in a stack once it has been created?
+
+yes, we can make a chnage ---> ChangeSet
+
+When i delete the stack, whether the created resources will also be deleted or not? ----> yes, resources will be terminated 
+-----------------------------------------------------
+ELB and ASG:
+
+ELB ---> Elastic Load Balancer
+ASG ---> Auto Scaling Group
+
+
+ELB:
+
+* split/distribute the incoming traffic to the servers which is allocated by the ASG
+* balance your load
+
+ASG:
+
+* increase the number of machines based on the incoming traffic
+
+google.com ---> ip address of elb ---> available servers 
+
+* continously do the health check of servers
+
+Target --> one server
+Target Group ---> collection of servers
+
+Instances
+lambda
+ip address
+ALB
+
+Type of LB:
+
+Application Load Balancer ----> http/https(public internet)
+Network Load Balancer ----> tcp/udp
+Gateway Load balancer
+
+Classic load balancer ----> http/https/tcp/udp
+
+task done:
+2ec2 ---> attached those ec2 to the target groups ---> elb and attaching the target group to this load balancer
+
+ASG:
+
+Launch template ---> 
+
+while creating an ec2:
+
+name and tags
+AMI
+instance type
+keypair
+network
+configuration storage
+
+Desired capacity --> 3 idlies ---> 2 machines
+Minimim capacity --> 2 idlies ---> 1 machine
+Maximum capacity --> 4 idlies ---> 4 machine
+
+2 machines ---> if one machine terminated ther will be no issue ---> but if both machines ---> immediatedl asg will create one machine
+--------------------------------------------------------
+SDLC:
+
+Software Development Life Cycle
+
+1) Requirement Gathering: 
+
+* develeopment test meets the stakeholders to understand their requirement
+* all necessary information will be collected
+* SRS Document(Software Requriement Specification)
+
+2) Planning:
+
+* project plan ---> scope, objectives, goals, resource needed, budget, timeline
+* risk mitigation ---> identify potential risk ---> outline strategies
+* communication plan
+
+3) Design:
+
+* System Design Document ---> detailed description of overall system architecture, componetns, interfaces
+
+4) Development:
+
+* developer will start developing the application based on the given requirements
+
+5) Testing:
+
+* testers wil test the application based on the client requirements
+* ensure all the functionality is working fine ---> responsible for the application quality
+
+6) Deployment:
+
+* devops team will start the deployment process
+
+7) Maintanence:
+
+* ongoing maintanence
+* regualr updates, bug fixes, performance optimizations
+------
+Models:
+
+Waterfall model
+V model
+Iterative model
+Spiral model
+Agile model
+
+Waterfall model:
+
+* traditional approach
+* sequential flow(step by step)
+* requirements should be finalized at the requirement phase
+
+
+Advantages:
+
+* clear documentation ---> roadmap from start to end phase
+* easier project management
+* long term projects
+
+Disadvantages:
+
+* if there's any changes needed to be done later, it is not possible
+* late error detection
+* client involvement will bery less
+* time taken to deliver the project is high
+* no team colloboration
+-------------------------------------------
+Agile methodolgy:
+
+* colloboration and communication betweem the team, client will be good
+* flexible
+* adaptability
+* iterative process
+
+Principles:
+
+* individual and team interaction over process and tools
+* working software over comprehensive documentation
+* customer colloboration over contract negotiatiom
+* responding to the changes over following the plan
+
+Agile:
+
+Scrum ----> most preferred 
+Kanban
+
+Scrum ---> encourage team members to work together to complete project goals
+
+EPIC ---> Bulk Requirements ----> split this bulk requirements into smaller tasks/unit(User Stories)
+
+US01 --> amazon logo
+US02 --> Sign in and Email or mobile phone number
+US03 --> email or phone field
+US04 --> Continue button
+US05 --> Need help? link
+Us06 --> create amazon account
+US07: automate deployment process
+US08: create infrastructure
+
+sprint ---> time frame to complete the user stories(2 - 4 weeks)
+
+1 sprint ---> 2 weeks ---> 10 days
+
+Client given me timeframe of one month ---> 4 weeks(2 sprint)
+
+Which project management tool:
+
+JIRA, Rally, TestRail ....
+-----------------
+Roles in Scrum:
+
+Product Owner ---> client who's giving the requriements
+BA --> Business Analsyst 
+Scrum master ---> manage the team/track the progrss of the team
+Developement(dev, tester, devops)
+--------------
+Sprint Ceremonies/meeting:
+
+Sprint grooming:
+
+* split the bulk requriements into the user stories
+* assign the user story points
+* conducted by BA(Business Analyst)
+user story points --> complexity of the user stories
+poker card technique ---> fibonacci series(0,1,2,3,5)
+min ---> 1 
+max ---> 5
+1 point ---> 2 days
+5 point ---> 10 days
+* all the user stories will be moved to product backlog
+* BA, dev team
+* 3 hours
+
+Sprint planning:
+
+* which are the user stories which we are going to work on current sprint will be moved to sprint backlog
+* Scrum master, dev team
+* 1 - 1.5 hours
+
+Daily Standup meeting:
+
+* quick call
+* scrum master
+* 15-30 mins
+* What is the task worked on yesterday
+What is the task working on today
+Any blockers
+
+Retrospective meeting:
+
+* What went well in the previous sprint
+* What are the challenges we have faced
+* any feedbacks/suggestions to overcome in the next sprint
+* any appreciations 
+
+Review meeting:
+
+* showcasing the demo to the client which we have done in the earlier sprint
+---------------------------------------------------------
+DevOps:
+
+Agile ---> constrcution a home
+Devops ---> specialized team to do all the maintance work
+
+Agile + Devops ---> success prodcut
+
+DevOps ---> dEvelopement + Operations ---> filling the gap between the dev + ops team
+
+Automate the dev + test + deployment
+-----------------
+GIT:
+
+SCM ---> Source Code Management ----> where the dev/tester going to store the code
+
+Developer ---> java/python/js ----> Source code
+
+Maintaining/Storing ---> GIT/SVN
+
+Version Control System:
+
+* record/amange the changes which we have done
+* track all the changes when multple developer works on same project
+
+Dev1 --> amazon logo
+Dev2 --< signin textbox
+Dev3 --> continue button
+
+File1 ---> hello --->v1
+File1 ---> hello world ---> v2
+File2 ---> hello world welcome ---> v3
+
+Types of VCS:
+
+Centralized Version Control System ---> CVCS
+Distributed Version Control System ---> DVCS
+
+Centralized Version Control System ---> CVCS:
+
+* centralized server 
+
+Whatsapp ---> chat ---> 1.0
+Whatsapp ---> videocall ---> 1.1
+Whatsapp ---> audiocall ---> 1.2
+
+If this CS Fails ---> code has been gone ----> Single Point of Failure
+
+eg: SVN
+
+Distributed Version Control System:
+
+* even though the machine crahses ---> our code is safe
+
+Whatsapp ---> chat ---> 1.0
+Whatsapp ---> videocall ---> 1.1
+Whatsapp ---> audiocall ---> 1.2
+
+Tools:
+
+Git or github
+GITLAB
+Tortoise GIT
+Bit Bucket
+Source Tree
+
+Github:
+
+Git bash --> github command prompt
+
+https://git-scm.com/download/win
+
+git init ---> it will intiliaze one empty repositry
+
+git config --global user.email <emailaddress>
+
+git config --global user.name <username>
+
+git remote add origin repurl
+
+---
+git status ---> used to track modified files/changes file
+git add . ---> add all the files to staging area
+git commit -m "test cases" ---> track the history of code
+----------------------------------------
+
+linux:
+
+sudo su
+yum install -y git
+git --version
+mkdir projectname
+cd projectname
+vi file.txt ---> press i ---> esc + :wq!
+git init
+git config --global user.email <emailaddress>
+git config --global user.name <username>
+git remote add origin repurl
+git status
+git add .
+git commit -m "message"
+git commit --amend ---> we can edit the commit message after commiting
+git push -u origin master 
+settings ---> developer settings ---> PAT ---> generate classic token
+git rm filename ---> remove/delete the file from local machine/staging area
+git rm --cached filename ---> it will remove only from the staging area not from your locall machine
+git log ---> log status of the commit history
+git log --oneline ---> view log in single line
+git reset --hard commitid ---> delete the recent commit files...it cannot be recovered ---> HEAD(latest commit)
+ddhste --> file.txt -->hellowelcometoaws
+jahtste --> file.txt --> hellowelcome
+ksjsuue --> file.txt ---> hello
+git revert commitid ---> it will revert back to the previous commit ---> it will create one more commit
+git branch ---> check all the branches
+git checkout -b branchname 
+
+US01 ---> dev1 wil create new branch
+US02 ---> dev2 will create new branch
+
+Us01 branch ---> file.txt, file1.txt
+from the master ---> git pull origin uso1 ---> it will pull the latest changes to the master bracnh as well 
+
+git pull ----> will fetch the latest changes from the remote repo and automaticallt merge to the current branch
+
+git fetch ----> will fetch the latest changes but it wont impact the changes in the local machine
+
+PR Request: Pull Request ---> dev will keep the reviewers ---> atleast two reviewers should review the code and approve the changes  ---> once both of them approved only we can able to merge the code to the master branch
+
+fork ---> used to create the copy from other github accunt to your github repo
+
+git stash ---> we can save and restore changes in your git repo
+
+git stash apply ---> apply the changes back
+-------------------------------
+Jenkins:
+
+CICD Tools ---> Continous Integration/ Continous Deployment
+
+Continous Integration:
+
+Build + Testing
+
+Build:
+
+Developer after doing some code changes ---> pushed the code to the github repo ---> PR request ----> code will be merged to the master branch
+
+Stages:
+
+Compile ---> compile the code into the binary code
+Code Review ----> quality of the code
+Unit Testing ---> done by the developement team
+Packaging ---> .jar/war/ear
+
+Testing:
+
+testing team will get the jar/war/ear file from the development team
+Automation testing ---> deploy the code to the lower environement
+
+dev -----> wwwdev.amazon.in
+int ---> wwwint.amazon.in
+qa---> wwwqa.amazon.in
+perf---> wwwperf.amazon.in
+prod ----> www.amazon.in
+------------------------
+Continous Devlivery vs Continous Deployment
+
+Continous Devlivery:
+
+* CI process with the manual intervention ---> manually deploy to the lower environment
+
+Continous Deployment:
+
+* deployment will be fully automated
+* no manual intevention
+
+Build + Testing + deployment 
+
+Tools in market for CICD:
+
+Jenkins
+Gitlab
+Github Actions
+Travis CI
+AWS Codepipeline
+
+Why Jenkins?
+
+* oldest tool available in market
+* plugins
+* build on top of java
+* open source
+* platform(OS) independent
+* community group
+
+pre-requiste:
+
+install java
+-----------
+ubuntu machine:
+
+yum --> centos
+apt ---> ubuntu
+8080 Port ---> inbound rules
+
+sudo apt update
+sudo apt upgrade -y
+sudo apt install openjdk-11-jdk -y
+java --version
+intialize repo ---> curl -fsSL https://pkg.jenkins.io/debian/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+key for this repo --->  echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins -y
+jenkins --version
+
+pubip:8080 ---> in browser ---> admin password
+sudo cat copythpathfrombrowser
+paste the password in the browser
+--------------
+Build Automation Tool:
+
+Build ---> Compile + Code Review + Unit Testing + Package
+
+Maven ---> java project
+Gradle ---> Groovy project
+Ant ----> python
+MSBuild --->.NET
+
+Maven ---> pom.xml---> heart of the project --- Project Object Model
+Gradle ---> build.gradle
+------
+Stages:
+
+Compile
+Code Review
+Unit Testing
+Package
+
+Goal:
+
+mvn compile
+mvn pmd:pmd(project master/meter detection)
+mvn test
+mvn package
+
+Plugin:
+
+maven compiler plugin
+maven pmd plugin
+maven surefire plugin
+maven package plugin
+
+Manage jenkins ---> plugin ---> install maven integration plugin
+Manage jenkins ---> Tools ---> Maven_HOME --> install automatically
+
+defeult folder name in local machine for maven ---> .m2 folder
+
+https://github.com/Sathish0107/DevOpsClassCodes.git
+
+new item ---> maven project ---> github repo url ---> pre steps ---> invoke top level maven target ---> selct maven name + give the goal
+
+After packaging ---> under the target folder ---> war file will be available
+
+Jenkins Pipeline:
+
+Build:
+
+C + CR + UT + P
+
+Series of operations:
+
+Job1 --> Compile
+Job2 --> CodeReview
+Job3 --> UnitTesting
+Job4 --> Package
+
+Job1(success) ---> job2(success) ---> job3(success) ---> job4
+
+Upstream and DownStream:
+
+Upstream ----> those who trigger other jobs
+DownStream --> those jobs who gets triggered
+
+Compile ---> CodeReview --> unitTesting ---> Package
+
+PostBuild ---> Build other project
+----
+Task2:
+
+dev ---> push the code to the github repo ---> automatically it should trigger compile + CR + UT + P
+-----------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

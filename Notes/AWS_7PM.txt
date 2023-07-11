@@ -1,0 +1,1000 @@
+Sathish ----> 9840076968
+----------------------------------------------------------------------------
+AWS with DevOps:
+
+AWS Solution Architect or Master Program in AWS + DevOps
+
+Modules:
+
+Module 01: AWS(Services) ---> 30 days
+Module 02: Python ----> 6 hours
+Module 03: Linux 
+Module 04: DevOps(Devlopement + Operations)
+Module 05: AWS + DevOps + Intgeration(Real time Project)
+Module 06: Resume Prepration + Mock Interviews(7 Mock interviews)
+
+Duration: 3 months(-/+ 10 days)
+------------------------------------------------------------------
+Day 1:
+
+IT ----> Developement + Tester + DevOps
+
+Applications:
+
+Web Application -------> anything which is opening in the browser
+Desktop Application ------------> apps in the desktop
+Mobile Application -----> apps in the mobile
+
+eg: Whatsapp
+
+IT ----------> Web application 
+
+eg:
+
+NewFaceBook ---> developers(java, js, ruby, c#) ----> code ---> tester(test the code which is given the developer) ----> .jar/.war(exec file) ----> devops(deploy the app to the customer)
+
+NewFaceBook ----> 2 server ---> 100 users ---> 100 --> 1000 users(application crash)
+
+Data Center or on premises:
+
+* collection of servers
+* Initial investment is high
+* huge acres of land
+* time taken is very high
+* operational/maintanence cost
+* scalability --------> 100 ----> 1000 users (website will work fine)
+1000 ----> 100 users(website will work fine) ---> remaining server waste
+
+
+To overcome the above issues we moved to Cloud computing:
+
+Cloud providers:
+
+AWS --> Amazon Web Services
+Azure ---> MS
+GCP ---> Google Cloud Platform
+
+Why cloud computing?
+
+* pay per usage
+* no initial investment needed
+* no huge acres of land
+* no operational/maintanence 
+* Scalabilty ---> 100 ----> 1000 users ---> (automatic aws will allocate the servers)
+1000 ---> 100(aws will deallocate the allocated servers)
+
+Types of scability:
+
+Horizontal ----> 100 ---> 10000 users (number of servers/machines will increase)
+Vertical ----> upgrading the configuration in the same machine
+------------------------------------------------------------
+
+AWS Account:
+
+How to create the aws account:
+
+https://portal.aws.amazon.com/billing/signup#/start/email
+
+Once signed up --> select root user to login
+
+Root user:
+
+super admin or super access
+Account owner that performs tasks requiring unrestricted access
+
+1) Region:
+
+* geographical location
+* each region has the multiple availbality zoness
+
+
+example1:
+
+newFaceBook --->developers(chennai office) ----> users(us peoples) ----> region(should be selected based on customer location)
+
+2) Availability Zones:
+
+* secure 
+* noone knows where the AZ are located
+* Each AZ has edge locations
+
+example2:
+
+newFaceBook  ----> us + indian ----> regions --> based on the customer count
+
+example 3:
+
+newFaceBook ---> us + indian ---> us customer high ---> us region(indian govnt -->restrictions ---> we should not host in us servers) --> indian regions
+
+example 4:
+
+netFlix ---> indian + uk + australian  ---> aus customer high --> aus region
+
+
+3) Edge Locations:
+
+* cache
+* optimize performance(performance very high)
+
+
+AWS region ---> 31 region ---> 99 AZ --> 400+ EL
+---------------------------------------------------------------------------------
+Service:
+
+EC2: ----> Elastic Cloud Compute
+
+* Virtual Servers/machine/instance in the Cloud
+
+Ec2 Dahsboard ---> Launch Instance
+
+1) Name and tags:
+
+Key -- value Pair
+
+2) AMI(Application and OS Images (Amazon Machine Image)):
+
+* Software part  ---> OS + Pre installed software
+
+3) Instance type:
+
+* hardware type
+
+How will you choose the instance type:
+
+* vcpu
+* memory(RAM)
+* n/w performance
+
+Highest RAM: 6144 GB
+
+Instance Families:
+
+General Purpose ----------> moderate performance, vpc, memeory 
+Compute Optimized --------> compute(calculation) ---> calculative projects(gaming, video encoding)
+Storage Optimized -------> hanlding large set of data like db projects(search engines)
+Memory Optimized --------> memory cache project(big data)
+Accelerated computing ---> high calculative projects ---> fluid dynamics, computational finance, seismic analysis, speech recognition, autonomous vehicles, and drug discovery.
+HPC -----------> High Performance Computing ---> cost high
+
+Pricing Options:
+
+* On Demand
+* Reserved
+* Spot instance
+* Dedicated host
+
+On Demand:
+
+* sudden purchase
+* cost high
+
+Reserved:
+
+* plan early ---> 1 - 3 yrs
+* pre reserved
+* cheap --> 70% discount
+
+Fully upfront: ---> full amount need to pay initial --> 70%
+Partial upfront ----> partial amount need to pay + remaining(pay per usage) --> 50%
+No upfront ---> no initial amount --> 20% discount
+
+
+* Spot Instance:
+
+Unused servers will be allocated
+90% discount
+not reliable
+
+server ---> $5 ---> $7 --> $9 ---> $11 --> $16
+
+person1 --> $5
+person2 --> $10
+person3 --> $15
+
+Dedicated Host:
+
+* one particular server ---> allocated to one organization
+* very cost high
+
+5) Key Pair(login): ----> secure our instance
+
+6) Network Settings ---> Firewall ---> security groups
+
+By default --> your instance will be secured by firewall
+
+SSH ---> Secure Shell --->  in order to access your linux machine from outside 
+
+7) Configuration Storage:
+
+* hardisk
+----------------------------------------------------------------------------
+
+How to connect the instance:
+
+* connect ---> AWS management console
+* CLI(cmd+cloudshell)
+* programatical way
+
+How to connect with the help of command prompt:
+
+.pem file ---> open the command prompt
+
+cd --> change directory
+
+syntax:
+
+ssh -i <key-pairname> username@ipaddress
+
+ssh -i newKP0704.pem ec2-user@ec2-13-233-63-34.ap-south-1.compute.amazonaws.com
+
+-i ---> identifier
+
+Cloudshell:
+
+* upload the .pem file under the actions
+* chmod 400 newKP0704.pem
+* ssh -i "newKP0704.pem"ec2-user@ec2-13-233-63-34.ap-south-1.compute.amazonaws.com
+
+How to connect with Putty:
+
+* third party tool
+
+https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+
+putty.exe
+
+start --> putty ---> hostname --> paste your id adddress
+connection ---> ssh ---> auth --> credentials ---> upload .ppk file which we have uploaded ---> login as: ec2-user 
+------------------------------------------------------------------------------
+How to launch the windows machine:
+
+linux ---> SSH(Secure Shell)
+Windows ---> RDP(Remote Desktop Protrocol)
+------------------------------------------------------------
+Storage:
+
+* harddisk/pendrive/google Drive
+
+By default  ----> While creating ec2 ---> default storage --> removed later
+
+While creating an ec2 ---> configure storage will be automatically allocated
+
+Types:
+
+ephimeral storage
+persistent storage
+
+ephimeral storage :
+
+* Faster but it is not reliable
+* if anything happens to the machine ---> data will be lost
+* temporary data
+* tightly coupled
+
+persistent storage:
+
+* Reliable
+* external hardisk/pendrive/google drive
+* permanaent data
+* lightly coupled
+
+EBS:
+
+Elastic Block Storage:
+
+* ebs called as volumes
+* external storage
+* even if the machine crashes, our data is safe with EBS
+* persistent storage
+
+It is not an service ---> it is an feature of EC2
+
+Types of volumes:
+
+* Magnetic disk drive(no organization using this MDD)
+* HDD
+* SSD
+
+Type of Data:
+
+Cold Data ----> infrequently accessed data
+Hot Data -----> frequently accessed data
+
+* HDD:
+
+* Hard Disk Drive
+
+Types:
+
+Cold HDD: 
+
+* infrequently accessed data
+
+ThroughtPut HDD(Hot data):
+
+ThroughtPut:
+
+* factor of performance for the data transfer/sec
+* amount of data being transferred per sec
+
+eg: 
+
+100 MB ---> 10MB/SEC ---> 10 SEC
+1000MB ----> 10MB/SEC ---> 100 SEC
+-------
+
+SSD:
+
+* Solid State Drive
+* performance is very high
+* cost is expensive
+
+General Purpose
+Provisioned IOPS
+
+General Purpose:
+
+* when application has moderate traffic/spike 
+* less cost when compared to IOPS
+
+1GB --> 3 IOPS
+
+Provisioned IOPS:
+
+IOPS ---> Input/Output Per Second
+number of i/o per sec
+I/O --> read/write
+performance is very high
+high cost
+
+1GB ---> 50 IOPS
+---------------------------------------------
+Snapshot:
+
+* Backup of your EBS
+
+eg: Whatsapp
+
+Types:
+
+Manual Backup --------> Create Snapshot
+Automatic Backup ---> life cycle policy
+
+
+Manual Backup:
+
+* click on storage --> Actions --> Create Snapshot
+* Snapshot ---> create snapshot
+
+volume --> you can choose only one specific volume
+instance ---> we can take an backup for all the volumes attached to this instance
+
+Automatic Backup:
+
+* click on storage --> Actions --> create snapshot lifecycle policy
+
+Schedule details:
+
+Frequency ---> Daily, Weekly, monthly, yearly
+
+Retention type ---> recent snapshot
+
+weekly ---> twice --> monthly ---> 8 backups
+----------------------------------------------------
+EBS Restrictions:
+
+* Volume which we have created ---> should match the same AZ of your ec2 instance
+--> which means you cannot connect outside the AZ
+* we can connect the volume to only one EC2 instance ---> we cannot to the multiple ec2 instances
+
+EBS Multi Attach Feature:
+
+* address the above second restrictions ---> it is allowing to connect multiple instance
+
+Restriction:
+
+* provisioned iops(io2)
+* nitro instance type
+
+Expensive
+-------------------------------------------------------------------------------
+EFS:
+
+Elastic File System
+
+* Shared resource
+* Regional service
+	* we can able to connect outside the AZ
+	* we can able to connect multiple EC2
+* structured and unstructured data's
+structured ---> table format
+unstrcutred ---> img, videos, files
+
+Storage Class:
+
+Standard Storage
+Standard IA ----> IA(Infrequent Access)
+One Zone
+One Zone IA
+Provisioned Throughput
+
+Standard:
+
+* data will be replicated across the multiple AZ
+
+27 INR/GB
+
+Standard IA:
+
+* data which is not frequently accessed
+
+2.21INR/GB
+
+One Zone:
+
+* data will be replicated in only one AZ
+14.43INR/GB
+
+One Zone IA:
+
+* data which is not frequently accessed
+1.19INR/GB
+
+Provisioned Throughput:
+
+* high end performance
+* expensive
+
+541INR/MB
+------------------------------------------------------------------------
+Transition into IA
+
+Transition files from Standard to Standard-Infrequent Access.
+
+Transition out of IA
+
+Transition files from Standard-Infrequent Access to Standard.
+
+Performance settings:
+
+Bursting ---> moderate performance
+Enhanced ---> more flixibilty
+
+Mount targets:
+
+* ip address
+
+EFS ----NFS Protocol---> MT ----> EC2
+
+NFS ---> Network File System
+
+After creating an EFS ---> Create EC2 + connect
+
+security groups ---> default --> inbound rules ---> edit ---> add NFS protocol
+
+* we need to install nfs
+
+sudo su ---> normal user to root user
+sudo --> super user---> admin access
+yum update -y
+yum yum install -y nfs-utils
+mkdir ---> make directory
+ls ---> list all files/folders/directory
+paste the attach command which is given by efs
+cd ---> change the directory
+touch ---> to create any file
+
+EFS Advantages:
+
+* we can connect between AZ within a region
+* we can connect the same EFS with multiple EC2 instance
+
+Disadvanatges:
+
+* we cannot connect outside the region
+-------------------------------------------------------------
+User Data:
+
+10 machines ----> install java
+
+* install the software on multiple mahcine at the same time 
+
+https://gist.github.com/herrera-ignacio/4d91ae564364f9120720f6bf029b9412
+
+apache server ---> httpd 
+
+once installed ---> start ---> enable
+
+systemctl --> start/enable/stop/diasable
+
+echo ---> print something
+
+print statments:
+
+System.out.println()
+print
+console.writeline
+console.log
+echo 
+-----------------------------------------------------------------------------
+
+S3:
+
+Simple Storage Service 
+
+Called as "bucket"
+
+* Unstructured files ---> images, videos, audio files, txt
+* Cheaper 
+EFS ---> storage + no of file operations
+S3 ---> storage
+* Unlimited Storage
+* Single Object --> should not exceed more than 5 TB
+* Object Storage Service  ---> metadata(complete info about the object stored)
+
+
+EBS ---> EFS ---> S3(we can connect outside the AZ, to multiple ec2, we can connect outside the region)
+
+
+Supported Format:
+
+'{"name":"John", "age":30, "car":null}'
+JSON ---> JavaScript Object Notation ---> key value pair--> 
+XML ---> Xtensive Markup Language
+
+
+By default ---> your object access will be denied
+
+* unblock the public access
+* generate the bucket policy ---> json format
+
+Bucket policy:
+The bucket policy, written in JSON, provides access to the objects stored in the bucket.
+
+Bucket ARN:
+
+ARN ---> Amazon Resource Name
+
+URL ---> Uniform Resoruce Locator
+URI --> Uniform Resource Identifier
+URN ---> Uniform Resource Name
+
+Policy ---> GetObject
+---------------------------------------------------------------
+
+S3 Versioning:
+
+Version ---> to track all the modified files or changed files
+
+
+file name ---> file.txt
+
+hello ----> version 1
+
+hello welcome to aws ----> version 2
+
+hello welcome to aws and have a happy learning!!! ---> v3
+
+Developer ---> login page developed ---> v1
+
+login page + need help? ---> v2 ---> after deploying --> there's some issue ---> revert back to v1(login page)
+
+Bucket Versioning ---> default ---> it will be disabled
+
+https://awsbucket02-17-04-23.s3.ap-south-1.amazonaws.com/s3versionDemo.txt
+
+https://awsbucket02-17-04-23.s3.ap-south-1.amazonaws.com/s3versionDemo.txt?versionId=Ds1ax_Ggv1BDp8VKBr_PRZkvqAT7iqku 
+
+Show version button --> disable ---> that is considered as normal object ---> policy ---> GetObject
+
+Show version button ---> enabled ---> that is considered as version object ---> policy --> GetObject + GetObject version
+
+Recent version is v3 ---> v3 + v2 + v1
+
+Delete objects:
+
+Version disabled ---> if we delete ---> object will be deleted ---> the deleted object will be stored in the "delete marker"(recycle bin) ---> if you want to restore ---> do permanently delete from delete marker
+
+Version enabled: ---> if we delete the version ---> automatically previous version will be restored to original or recent version
+
+If you want delete an object completely from bucket ---> you need to delete all the versions first and then only original object will be deleted
+-----------------------------------------------------------
+S3 ---> How to host the static website
+
+static ---> no often changes will occur
+
+dynamic ---> often changes will occur
+
+S3 ---> gives an option to host the static wesbite
+
+Static website hosting ----> By default ---> it will be disabled
+
+<html> 
+<head> </head>
+<body> </body>
+</html>
+-----------------------------------------------
+EVENT Notifications:
+
+* notify whenever the event occurs
+* SNS and SQS
+
+SNS: Simple Notification Service
+
+* notification when event occurs ---> if no user is available to receive the notification ---> will not be delivered.....
+
+SQS: Simple Queue Service
+
+* notification when event occurs ---> if no user is available to receive the notification----> message will wait in queue for 14 days --> if suddenly user comes---> message will be delivered
+
+SNS: Simple Notification Service:
+
+* Topic
+* notification service
+
+SNS ----> pub sub model ----> publisher subscriber model or push notification
+
+Amazon prime ---> publisher --->  amazon
+ 				  subscriber ---> user
+
+S3 ---> publisher
+user --> subscriber
+
+s3 ---> SNS ---> push the notification the subscriber
+
+
+Steps:
+
+Create a bucket
+Create SNS Topic
+Subscribe the user
+
+Once you subscribed the user---> confirm the subscription
+
+S3 --> Properties --->Event notifications
+
+Event types:
+
+Put ---> updating the exisiting file
+Post ---> uploading the new file
+
+When s3 tries to integrate with SNS ---> by default SNS will deny thr request
+
+
+SNS ---> Access Policy ---> 
+
+https://docs.aws.amazon.com/sns/latest/dg/sns-access-policy-use-cases.html
+------------------------------------------------
+
+Storage Class in S3:
+
+S3 Standard
+S3 Glacier
+
+S3 Standard:
+
+* Frequently Accessed Data
+
+S3 Glacier:
+
+* Infrequently Accessed Data
+
+Life Cycle Rule:
+
+To manage your objects so that they are stored cost effectively throughout their lifecycle
+
+* Transfer the object from one storage to anothe storage class
+* optimize the cost 
+
+Bucket ---> Management --> lifecycle rule
+------------
+CRR:
+
+* we can share the storage even outside the region ---> CRR(Cross Region Replication)
+* we can share the storage within an aws account or to another account
+Bucket ---> Management --> Replication Rule
+---------------
+Encryption:
+
+* converting the human readable format to the machine readbale format
+
+SSE ---> Server Side Encryption
+
+Amazon SSE -s3
+Amazon KMS 
+
+bucket ---> properties --> Edit default encryption 
+
+--------------------------------------------------------------------
+
+Characteristices:
+
+S3 ---> Simple Storage Service
+Unlimites Storage
+1 object --> 5TB
+versioning
+static hosting
+Event notificatioms
+CRR
+Storage classes
+encryptiom
+life cycle
+---------------------------------------------------------------------------------
+Root User:
+
+* administrator user
+* super user
+* Account owner that performs tasks requiring unrestricted access.
+
+MFA --->Multi Factor Authentication ---> adding one extra layer of security to our root user account
+
+By default ---> disabled
+
+Playstore ---> Duo Mobile ---> after installing ---> Setup account ---> Use QR Code or Use activate code
+
+IAM USER:
+
+Identity Access Management 
+
+Authentication ---> validating the identity
+
+Authorization ---> validating the access
+
+Google Sheet ---> 10 members
+
+5 ---> viewer access
+3 ---> writer access
+2 ---> no access
+
+How many authenticated users? ----> 5 users
+
+How many authorization users? ----> 8(authentication + Authorization)
+
+2 ---> no access
+
+Identity Access Management 
+
+Authentication + Authorization Management
+
+Four major elements:
+
+IAM USER
+IAM ROLES
+IAM Groups
+Policies
+
+Authentication:
+
+IAM USER + IAM ROLES
+
+Authorization:
+
+Policies
+
+Best Practices:
+
+Groups
+
+Identity Access Management 
+
+Authentication + Authorization Management
+
+IAM USER, ROLES + Policies Management
+
+IAM Roles:
+
+short term access ---> temporary access
+time bound access
+
+Default Session Duration ---> 1 hour
+
+Policies:
+
+AWS managed policy
+Customer inline policy
+
+STS ----> allows to switch to the role
+
+Create one policy ---> STS ---> attach the IAM USER
+--------------------------------------------------------
+VPC:
+
+Virtual Private Cloud
+
+* independent service
+* isolated service
+
+isolated --->  secure our resources separately ---> private space
+
+Design:
+
+Server ---> EC2
+Storage ---> EBS, EFS, S3
+Network ---> VPC
+DB
+
+Region ----> vpc
+AZ ----> subnet
+
+Max ---> 5 vpc per region ---> based on request we can increase
+Subnet ---> 200 subnets ---> adjustible
+
+Subnet:
+
+public subnet ---> which can be accessible by public network
+private subnet  ---> which cannot be accessible by public network
+
+HDFC APP ---> public subnet
+	|
+HDFC DB ---> private subnet
+
+Each world ---> all countries names are unique
+Each machine ---> unique ip address
+
+machine ---> ip address public ---> cmd --> ipconfig --->  192.168.1.28
+network provider ---> private ip address --> whatismyipaddress.com
+
+Ip address ---> network id + host id
+
+network id ---> 192.168.1.28
+
+ipv4 ---> it consists of four blocks ---> 32 bit ip address
+
+192.168.1.28
+ 8   8  8  8 ---> 32
+
+* most widely used
+
+ipv6:
+
+* it consists of 8 blocks
+* 128 bit ip address
+ab34.dd45.ggh3.aae3.kk89.hh01.bhn1.bb12
+ 16   16   16   16   16    16  16   16 ---> 128
+
+ IPV4:
+
+ Network id/hostid
+
+Network id ---> four blocks
+192.168.1.28
+
+Each block should not exceed more than 255 and should decrease below 0 ----> 0 - 255
+
+0.0.0.0
+    |
+255.255.255.255 
+
+Host id ---> 1 block
+
+Range ---> 1 to 32
+
+192.168.1.28/32
+27.5.50.210/32
+
+128.1.0.256 ---> incorrect
+
+CIDR:
+
+Classless Inter Domain Routing
+
+* improves the efficiency of ip address distribution
+
+10.0.0.0/32 ---> correct ---> 1 ip address --> 10.0.0.0
+10.0.0.0/31 ---> 2 ip address ---> 10.0.0.0, 10.0.0.1
+
+10.0.0.0/32 ---> 2^32-hostid ---> 2^32-32 ---> 2^0 ---> 1 
+10.0.0.0/31 ---> 2^32-31 ---> 2^1 --> 2 ip address
+10.0.0.0/30 ---> 2^32-30 ---> 2^2 ---> 4 ip address
+10.0.0.0/24 ---> 2^32-24 ---> 2^8 ---> 2x2x2x2x2x2x2x2 ---> 256 ip address
+
+https://www.ipaddressguide.com/cidr
+
+Default VPC:
+
+vpc + subnet + igw + RT
+
+User VPc:
+
+vpc + RT(default will be created) + subnet
+
+https://www.site24x7.com/tools/ipv4-subnetcalculator.html
+
+10.0.0.0/24 ---> 256 ip address ---> 2 subnet(equally split)
+
+128 --> subnet 1 ---> 10.0.0.0 ---> 10.0.0.127 ---> 
+128 --> subnet 2 ---> 10.0.0.128 ---> 10.0.0.255
+10.0.0.0
+  |
+10.0.0.255
+
+sudo su
+open the key pair -->copy
+vi keypairname.pem ---> i + paste the copied kp --> esc + :wq!
+-------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
