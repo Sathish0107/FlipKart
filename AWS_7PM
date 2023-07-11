@@ -1183,6 +1183,285 @@ def lambda_handler(event, context):
     ec2.stop_instances(InstanceIds=instances)
     print('stopped your instances')
 ---------------------------------------------
+CLOUDFORMATION:
+
+* Create and manage the resources
+* template ---> json/yaml
+
+key value pair
+
+json:
+
+{
+	"name" : "value"
+}
+
+Yaml:
+
+name : value
+
+Organization ---> 5 ec2 + 2 s3 + 1 RDS + 5vpc
+
+Stack ---> logical unit(where we will give the template to create the resources)
+
+Feed the resources we need to the cloudformation ---> it will create the resources with the feeded resources
+
+Task1:
+
+create simple ec2
+
+https://github.com/smalltide/aws-cloudformation-master/blob/master/1-introduction/1-ec2-with-sg-eip.yaml
+-----------------------
+ELB: Elastic Load Balancer
+
+* balance our load/traffic
+* split the incoming traffic to the servers which has been allocated by ASG
+
+ASG:
+
+* increase the number of machines based on the incoming traffic
+
+ELB Types:
+
+CLB ---> Classic Load Balancer ----> older version
+ALB ---> Application Load Balancer
+NLB ---> Network Load Balancer
+GLB ---> Gateway Load Balancer
+
+ALB vs NLB:
+
+ALB:
+
+* http/https
+* ecommerice site ---> product catalog, shopping cart, account details ----> each catalog has own servers
+
+ALB ---> sit infront all these servers
+
+* customer  ---> cart ---> route the customer to the cart server
+* customer ---> product ---> route the customer to the product server
+* smart routing  service
+
+NLB:
+
+* TCP, UDP 
+* it will analyse the customer request ---> direclty it will route the traffic blindly to the available server
+
+CLB --->  http/https/tcp/udp
+
+Target ---> single machine
+Target Group ---> more than one machine
+
+* instances
+* lambda
+* ip address
+* ALB
+
+Capacity:
+
+Desired  ----> 3 idlies ----> 3 server
+Minimum  ----> 2 idlies ----> 2 server
+Maximum  ----> 4 idlies ----> 5 server
+--------------------------------------------------------------------
+DevOps:
+
+Developement + Operations
+
+Source Code Management:
+
+* dev/tester ----> code(java,python) ----> source code
+* Maintain/Manage/Store ----> Source Code Management tool
+
+Version Control system:
+
+* keep track of the changes which we have done
+
+dev1 ----> amazon logo ---------------------> v1
+dev2 ---> username + password + submit button ----> v1 + v2
+dev3 ---> account creation page ----> v1 + v2 + v3(recent version)
+
+VCS:
+
+CVCS ----> Centralized Version Control System
+DVCS ----> Distributed Version Control System
+
+CVCS ----> Centralized Version Control System:
+
+Centralized server ----> all our project will be stored inside the Centralized server ---> SPOF(Single point of Failure)
+
+dev1 ----> amazon logo page
+dev2 ----> logo alignment
+dev3 ---> logo under username + password
+
+all three developer need to work in the same file
+
+lock in/check in ----> dev1 checkin the demo.java
+other two developers unable to work in the same file
+
+DVCS ----> Distributed Version Control System: 
+
+* all code will be available/distributed to all the developers
+
+git/github
+gitlab
+source tree
+tortoise git
+Bit bucket
+
+https://git-scm.com/downloads
+
+one time setup:
+
+git init ---> initialzie one empty repository
+git config --global user.name username
+git config --global user.email emailaddress
+git remote add origin repoul
+----
+daily routine:
+git status ---> check the modified files
+git add .
+git commit -m "message"
+git push -u origin master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
